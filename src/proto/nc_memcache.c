@@ -266,6 +266,11 @@ memcache_parse_req(struct msg *r)
                         break;
                     }
 
+                    if (str7cmp(m, 'v', 'e', 'r', 's', 'i', 'o', 'n')) {
+                        r->type = MSG_REQ_MC_VERSION;
+                        break;
+                    }
+
                     break;
                 }
 
@@ -288,6 +293,7 @@ memcache_parse_req(struct msg *r)
                     break;
 
                 case MSG_REQ_MC_QUIT:
+                case MSG_REQ_MC_VERSION:
                     p = p - 1; /* go back by 1 byte */
                     state = SW_CRLF;
                     break;
@@ -845,6 +851,11 @@ memcache_parse_rsp(struct msg *r)
                         break;
                     }
 
+                    if (str7cmp(m, 'V', 'E', 'R', 'S', 'I', 'O', 'N')) {
+                        r->type = MSG_RSP_MC_VERSION;
+                        break;
+                    }
+
                     break;
 
                 case 9:
@@ -903,6 +914,7 @@ memcache_parse_rsp(struct msg *r)
 
                 case MSG_RSP_MC_CLIENT_ERROR:
                 case MSG_RSP_MC_SERVER_ERROR:
+                case MSG_RSP_MC_VERSION:
                     state = SW_RUNTO_CRLF;
                     break;
 

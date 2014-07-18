@@ -46,6 +46,7 @@ typedef enum msg_parse_result {
     ACTION( REQ_MC_INCR )                      /* memcache arithmetic request */                    \
     ACTION( REQ_MC_DECR )                                                                           \
     ACTION( REQ_MC_QUIT )                      /* memcache quit request */                          \
+    ACTION( REQ_MC_VERSION )                   /* memcache version request */                       \
     ACTION( RSP_MC_NUM )                       /* memcache arithmetic response */                   \
     ACTION( RSP_MC_STORED )                    /* memcache cas and storage response */              \
     ACTION( RSP_MC_NOT_STORED )                                                                     \
@@ -57,6 +58,7 @@ typedef enum msg_parse_result {
     ACTION( RSP_MC_ERROR )                     /* memcache error responses */                       \
     ACTION( RSP_MC_CLIENT_ERROR )                                                                   \
     ACTION( RSP_MC_SERVER_ERROR )                                                                   \
+    ACTION( RSP_MC_VERSION )                   /* memcache version response */                      \
     ACTION( REQ_REDIS_DEL )                    /* redis commands - keys */                          \
     ACTION( REQ_REDIS_EXISTS )                                                                      \
     ACTION( REQ_REDIS_EXPIRE )                                                                      \
